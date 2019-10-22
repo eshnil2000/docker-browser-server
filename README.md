@@ -1,5 +1,16 @@
 # docker-browser-server
 
+### to get it working with node v12 or higher, need to change:
+*/usr/lib/node_modules/docker-browser-server/node_modules/root/index.js
+```###
+//ADD THIS MODULE
+var events = require('events');
+//COMMENT OUT UNSUPPORTED MODULE
+//Root.prototype.__proto__ = process.EventEmitter.prototype;
+//INSTANTIATE NEW MODULE
+Root.prototype.__proto__ = new events();
+###
+```
 Spawn and expose docker containers over http and websockets
 
 ```
